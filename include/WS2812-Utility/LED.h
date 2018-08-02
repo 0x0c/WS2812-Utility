@@ -10,7 +10,23 @@ namespace ESP32
 {
 namespace LED
 {
-typedef WS2812 Strip;
+class Strip : public WS2812
+{
+  public:
+    Strip(gpio_num_t gpioNum, uint16_t pixelCount, int channel = RMT_CHANNEL_0)
+        : WS2812(gpioNum, pixelCount, channel = RMT_CHANNEL_0)
+    {
+        _pixelCount = pixelCount;
+    }
+
+    uint16_t numberOfPixels()
+    {
+        return this->_pixelCount;
+    };
+
+  protected:
+    uint16_t _pixelCount;
+};
 
 class Color
 {
