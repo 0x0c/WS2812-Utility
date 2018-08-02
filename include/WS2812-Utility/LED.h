@@ -1,6 +1,7 @@
 #pragma once
 
 #include <WS2812.h>
+#include <algorithm>
 #include <cmath>
 
 namespace m2d
